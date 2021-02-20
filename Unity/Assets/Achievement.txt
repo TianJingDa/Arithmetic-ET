@@ -1,0 +1,17 @@
+achievementName,accuracy,meanTime,mainTitleIndex,subTitleIndex,imageIndex,chapterImageIndex,patternID,amountID,symbolID,digitID,operandID,difficulty
+Addition_0,80,5,Text_00006,Text_00010,Image_00005,Image_00030,1,0,0,0,0,0
+Addition_1,85,10,Text_00007,Text_00011,Image_00006,Image_00031,1,1,0,1,0,1
+Addition_2,90,15,Text_00008,Text_00012,Image_00007,Image_00032,0,0,0,2,1,2
+Addition_3,95,20,Text_00009,Text_00013,Image_00008,Image_00033,0,1,0,3,1,3
+Subtraction_0,80,5,Text_00018,Text_00022,Image_00009,Image_00034,1,0,1,0,0,0
+Subtraction_1,85,10,Text_00019,Text_00023,Image_00010,Image_00035,1,1,1,1,0,1
+Subtraction_2,90,15,Text_00020,Text_00024,Image_00011,Image_00036,0,0,1,2,1,2
+Subtraction_3,95,20,Text_00021,Text_00025,Image_00012,Image_00037,0,1,1,3,1,3
+Multiplication_0,80,20,Text_00030,Text_00034,Image_00013,Image_00038,1,0,2,0,0,0
+Multiplication_1,85,40,Text_00031,Text_00035,Image_00014,Image_00039,1,1,2,1,0,1
+Multiplication_2,90,60,Text_00032,Text_00036,Image_00015,Image_00040,0,0,2,0,1,2
+Multiplication_3,95,80,Text_00033,Text_00037,Image_00016,Image_00041,0,1,2,1,1,3
+Division_0,80,10,Text_00042,Text_00046,Image_00017,Image_00042,1,0,3,1,0,0
+Division_1,85,20,Text_00043,Text_00047,Image_00018,Image_00043,1,1,3,2,0,1
+Division_2,90,30,Text_00044,Text_00048,Image_00019,Image_00044,0,0,3,1,1,2
+Division_3,95,40,Text_00045,Text_00049,Image_00020,Image_00045,0,1,3,2,1,3

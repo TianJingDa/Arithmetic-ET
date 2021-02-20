@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: caa435a2b00d47f42ac9655a0ae8b8e8
+timeCreated: 1515300066
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FOTC-ARZhongyuanGB
+  fontNames:
+  - FOTC-ARZhongyuanGB
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
