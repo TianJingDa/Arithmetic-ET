@@ -160,7 +160,7 @@ public class SetUpFrameWrapper : GuiFrameWrapper
             return;
         }
 
-        toggleGroup.SetAllTogglesOff();
+        toggleGroup.SetAllTogglesOff();//待优化
         List<Vector2> tempTogglesAnchoredPositon = new List<Vector2>(togglesAnchoredPositon);
         Vector2 curToggleAnchoredPositon = tempTogglesAnchoredPositon[0];
         tempTogglesAnchoredPositon.RemoveAt(0);
@@ -170,7 +170,7 @@ public class SetUpFrameWrapper : GuiFrameWrapper
             RectTransform toggleRectTransform = toggleGroup.transform.GetChild(i) as RectTransform;
             toggleRectTransform.anchoredPosition = tempTogglesAnchoredPositon[i];
         }
-        toggleGroup.ActiveToggles().ElementAt(curID).isOn = true;
+        toggleGroup.ActiveToggles().ElementAt(curID).isOn = true;//待优化
     }
     /// <summary>
     /// 记录toggles初始的位置

@@ -195,7 +195,6 @@ public class StatisticsFrameWrapper : GuiFrameWrapper
     #region 成就
     private void RefreshAchievementWin()
     {
-        achievementWin.SetActive(true);
         //if (summaryAchievementArray == null) summaryAchievementArray = achievementSummary.GetComponentsInChildren<SummaryAchievementItem>(true);
         achievementDict = new Dictionary<DifficultyID, List<AchievementInstance>>
                 {
@@ -206,8 +205,7 @@ public class StatisticsFrameWrapper : GuiFrameWrapper
                     //{SymbolID.Summary, achievementList.FindAll(x => x.cInstance.symbolID == SymbolID.Summary)},
                     //{SymbolID.Hidden, achievementList.FindAll(x => x.cInstance.symbolID == SymbolID.Hidden)}
                 };
-        achievementToggleGroup.SetAllTogglesOff();
-        achievementToggleGroup.ActiveToggles().First().isOn = true;
+        //achievementToggleGroup.ActiveToggles().First().isOn = true;
     }
     private void RefreshSummaryAchievementPage()
     {
@@ -277,8 +275,7 @@ public class StatisticsFrameWrapper : GuiFrameWrapper
                     {SymbolID.Multiplication, saveFileList.FindAll(x => x.cInstance.symbolID == SymbolID.Multiplication)},
                     {SymbolID.Division, saveFileList.FindAll(x => x.cInstance.symbolID == SymbolID.Division)}
                 };
-        saveFileToggleGroup.SetAllTogglesOff();
-        saveFileToggleGroup.ActiveToggles().First().isOn = true;
+        //saveFileToggleGroup.ActiveToggles().First().isOn = true;
     }
     private void RefreshSummarySaveFilePage()
     {
