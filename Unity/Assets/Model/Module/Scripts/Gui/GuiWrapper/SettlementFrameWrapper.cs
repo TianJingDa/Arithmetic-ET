@@ -119,21 +119,6 @@ public class SettlementFrameWrapper : GuiFrameWrapper
                 }
 
                 isUploading = true;
-                WWWForm form = new WWWForm();
-				form.AddField("userId", GameManager.Instance.UserID);
-				form.AddField("jwttoken", GameManager.Instance.Token);
-				form.AddField("model", (int)curSaveFileInstance.cInstance.patternID + 1);
-				form.AddField("num", (int)curSaveFileInstance.cInstance.amountID + 1);
-				form.AddField("calcu", (int)curSaveFileInstance.cInstance.symbolID + 1);
-				form.AddField("digit", (int)curSaveFileInstance.cInstance.digitID + 2);
-				form.AddField("operate", (int)curSaveFileInstance.cInstance.operandID + 2);
-                form.AddField("timelast", RecordController.Instance.FillTimeLast(curSaveFileInstance));
-                form.AddField("accuracy", curSaveFileInstance.accuracy.ToString("f1"));
-                form.AddField("version", GameManager.Instance.Version);
-                curSaveFileInstance.achievementName = "";//上传的战绩都没有成就
-                string data = JsonUtility.ToJson(curSaveFileInstance);
-                form.AddField("data", data);
-                GameManager.Instance.UploadRecord(form, OnUploadSucceed, OnUploadFail);
                 break;
             case "AchievementDetailShareBtn":
                 AchievementController.Instance.CurAchievementInstance = curAchievementInstance;

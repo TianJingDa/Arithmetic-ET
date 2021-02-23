@@ -9,11 +9,6 @@ using cn.sharesdk.unity3d;
 public class GameManager : MonoBehaviour
 {
     private const float                                         TimeOut = 1f;
-#if TEST
-    private const string                                        VisitorURL = "http://182.92.68.73:8091/register";
-#else
-    private const string                                        VisitorURL = "http://47.105.77.226:8091/register";
-#endif
 
     private LanguageController                                  c_LanguageCtrl;
     private FightController                                     c_FightCtrl;
@@ -23,7 +18,6 @@ public class GameManager : MonoBehaviour
     private FontController                                      c_FontCtrl;
     private TextColorController                                 c_TextColorCtrl;
     private RecordController                                    c_RecordCtrl;
-    private RankController                                      c_RankCtrl;
     private GuiController                                       c_GuiCtrl;
     private BluetoothController                                 c_BluetoothCtrl;
 
@@ -45,54 +39,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString("UserName", value);
         }
     }
-
-	public string Token
-	{
-		get
-		{
-			return PlayerPrefs.GetString("Token", null);
-		}
-		private set
-		{
-			PlayerPrefs.SetString("Token", value);
-		}
-	}
-
-	public string UserID
-	{
-		get
-		{
-			return PlayerPrefs.GetString("UserID", null);
-		}
-		private set
-		{
-			PlayerPrefs.SetString("UserID", value);
-		}
-	}
-
-    public bool IsNewPlayer
-    {
-        get
-        {
-            int isNew = PlayerPrefs.GetInt("IsNewPlayer", 1);
-            return isNew > 0;
-        }
-        set
-        {
-            int isNew = value ? 1 : 0;
-            PlayerPrefs.SetInt("IsNewPlayer", isNew);
-        }
-    }
-		
-	public bool IsLogin
-	{
-		get
-		{
-			bool hasToken = !string.IsNullOrEmpty(Token);
-			bool hasUserID = !string.IsNullOrEmpty(UserID);
-			return hasToken && hasUserID;
-		}
-	}
 
     public string Version
     {
@@ -127,7 +73,6 @@ public class GameManager : MonoBehaviour
         c_SkinCtrl              = SkinController.Instance;
         c_TextColorCtrl         = TextColorController.Instance;
         c_RecordCtrl            = RecordController.Instance;
-        c_RankCtrl              = RankController.Instance;
         c_GuiCtrl               = GuiController.Instance;
         c_BluetoothCtrl         = BluetoothController.Instance;
     }
@@ -137,8 +82,6 @@ public class GameManager : MonoBehaviour
         m_ShareSDK = GetComponent<ShareSDK>();
         m_ShareSDK.shareHandler = OnShareResultHandler;
         InitShareIcon();
-        ResetUserName();
-        if (!IsLogin) StartSilentLogin();
         c_GuiCtrl.SwitchWrapper(GuiFrameID.StartFrame, true);
 //#if UNITY_EDITOR
 //        gameObject.AddComponent<Camera>();
@@ -175,37 +118,6 @@ public class GameManager : MonoBehaviour
         }
         m_ShareSDK.ShareContent(type, content);
     }
-
-    public void StartSilentLogin(System.Action OnSucceed = null, System.Action<string> OnFail = null)
-	{
-        if (m_IsLogining)
-        {
-            return;
-        }
-        m_IsLogining = true;
-        StartCoroutine(SilentLogin(OnSucceed, OnFail));
-	}
-
-    public void DownloadRecord(CategoryInstance instance, System.Action<ArrayList> OnSucceed, System.Action<string> OnFail)
-    {
-        StartCoroutine(c_RankCtrl.DownloadRecord(instance, OnSucceed, OnFail));
-    }
-
-    public void UploadRecord(WWWForm form, System.Action<string> OnSucceed, System.Action<string> OnFail)
-    {
-        StartCoroutine(c_RankCtrl.UploadRecord(form, OnSucceed, OnFail));
-    }
-
-    public void GetRankDetail(WWWForm form, System.Action<string> OnSucceed, System.Action<string> OnFail)
-    {
-        StartCoroutine(c_RankCtrl.GetRankDetail(form, OnSucceed, OnFail));
-    }
-
-    public void EnrollActivity(WWWForm form, System.Action<CategoryInstance> OnSucceed, System.Action<string> OnFail)
-    {
-        StartCoroutine(c_RankCtrl.EnrollActivity(form, OnSucceed, OnFail));
-    }
-
 #endregion
 
 #region 私有方法
@@ -279,95 +191,6 @@ public class GameManager : MonoBehaviour
         string path = Application.persistentDataPath + "/Image/ShareIcon.png";
         if (!File.Exists(path)) StartCoroutine(AssetHelper.CopyImage("ShareIcon.png"));
     }
-
-    /// <summary>
-    /// 为了兼容之前版本中已经起名的玩家，需要清除用户名，重新起名
-    /// </summary>
-    private void ResetUserName()
-    {
-        if (IsNewPlayer)
-        {
-            UserName = null;
-        }
-    }
-
-    /// <summary>
-    /// 获取游客信息
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator SilentLogin(System.Action OnSucceed, System.Action<string> OnFail)
-    {
-        MyDebug.LogGreen("VisitorURL: " + VisitorURL);
-        WWW www = new WWW(VisitorURL);
-
-        float responseTime = 0;
-        while (!www.isDone && responseTime < TimeOut)
-        {
-            responseTime += Time.deltaTime;
-            yield return www;
-        }
-
-        if (www.isDone)
-        {
-			LoginResponse response = JsonUtility.FromJson<LoginResponse>(www.text);
-            MyDebug.LogGreen("www.text: " + www.text);
-			if (response != null)
-			{
-				if (response.code == (int)CodeID.SUCCESS)
-				{
-                    m_IsLogining = false;
-                    IsNewPlayer = true;
-                    Token = response.token;
-					UserID = response.data.id;
-                    if (OnSucceed != null)
-                    {
-                        OnSucceed();
-                    }
-                    yield break;
-				}
-                else if (response.code == (int)CodeID.GAME_VERSION_ERROR)
-                {
-                    MyDebug.LogYellow("Silent Login Fail:" + response.code);
-                }
-                else
-                {
-					MyDebug.LogYellow("Silent Login Fail:" + response.code);
-				}
-			}
-			else
-			{
-				MyDebug.LogYellow("Silent Login Fail: Message Is Not Response!");
-			}
-        }
-        else
-        {
-            MyDebug.LogYellow("Silent Login Fail Fail: " + www.error);
-        }
-
-        m_IsLogining = false;
-        string message = c_LanguageCtrl.GetLanguage("Text_20066");
-        if (OnFail != null)
-        {
-            OnFail(message);
-        }
-    }
-
-	[System.Serializable]
-	private class LoginResponse
-	{
-		public int code;
-		public string errmsg;
-		public string token;
-		public LoginData data;
-
-	}
-
-	[System.Serializable]
-	private class LoginData
-	{
-		public string id;
-    }
-
 #endregion
 
 }

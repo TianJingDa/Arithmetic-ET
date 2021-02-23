@@ -55,12 +55,7 @@ public class RankItem : Item, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-		WWWForm form = new WWWForm();
-		form.AddField("userId", GameManager.Instance.UserID);
-		form.AddField("jwttoken", GameManager.Instance.Token);
-		form.AddField("model", (int)FightController.Instance.CurCategoryInstance.patternID + 1);
-		form.AddField("rankId", content.id);
-		GameManager.Instance.GetRankDetail(form, OnGetRankDetailSucceed, OnGetRankDetailFail);
+
     }
 
 	private void OnGetRankDetailSucceed(string data)
@@ -69,7 +64,7 @@ public class RankItem : Item, IPointerClickHandler
 		if(instance != null)
 		{
             instance.isUpload = true;
-            RankController.Instance.CurRankInstance = content;
+            //RankController.Instance.CurRankInstance = content;
             RecordController.Instance.CurSaveFileInstance = instance;
 			GuiController.Instance.SwitchWrapper(GuiFrameID.SaveFileFrame, true);
 		}

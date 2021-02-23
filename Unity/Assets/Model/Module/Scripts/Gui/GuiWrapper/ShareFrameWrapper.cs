@@ -291,24 +291,24 @@ public class ShareFrameWrapper : GuiFrameWrapper
 
     private void InitRank()
     {
-        RankInstance rInstance = RankController.Instance.CurRankInstance;
-        SaveFileInstance sInstance = RecordController.Instance.CurSaveFileInstance;
-        if (rInstance == null || sInstance == null) return;
+        //RankInstance rInstance = RankController.Instance.CurRankInstance;
+        //SaveFileInstance sInstance = RecordController.Instance.CurSaveFileInstance;
+        //if (rInstance == null || sInstance == null) return;
 
-        sharelTitle.gameObject.SetActive(true);
-        sharelTitle.text = LanguageController.Instance.GetLanguage("Text_90009");
-        sharelTitle.text = string.Format(sharelTitle.text, rInstance.name);
-        rankSharePattern_Time.SetActive(sInstance.cInstance.patternID == PatternID.Time);
-        rankSharePattern_Number.SetActive(sInstance.cInstance.patternID == PatternID.Number);
-        rankShareRank.text = string.Format(rankShareRank.text, rInstance.rank);
-        rankShareAmount.text = string.Format(rankShareAmount.text, sInstance.qInstancList.Count);
-        rankShareTime.text = string.Format(rankShareTime.text, sInstance.timeCost.ToString("f1"));
-        rankShareSymbol.text = string.Format(rankShareSymbol.text, FightController.Instance.GetSymbol(sInstance.cInstance.symbolID));
-        rankShareDigit.text = string.Format(rankShareDigit.text, (int)(sInstance.cInstance.digitID + 2));
-        rankShareOperand.text = string.Format(rankShareOperand.text, (int)(sInstance.cInstance.operandID + 2));
-        rankShareAccuracy.text = string.Format(rankShareAccuracy.text, sInstance.accuracy.ToString("f1"));
-        string meanTime = (sInstance.timeCost / sInstance.qInstancList.Count).ToString("f1");
-        rankShareMeanTime.text = string.Format(rankShareMeanTime.text, meanTime);
+        //sharelTitle.gameObject.SetActive(true);
+        //sharelTitle.text = LanguageController.Instance.GetLanguage("Text_90009");
+        //sharelTitle.text = string.Format(sharelTitle.text, rInstance.name);
+        //rankSharePattern_Time.SetActive(sInstance.cInstance.patternID == PatternID.Time);
+        //rankSharePattern_Number.SetActive(sInstance.cInstance.patternID == PatternID.Number);
+        //rankShareRank.text = string.Format(rankShareRank.text, rInstance.rank);
+        //rankShareAmount.text = string.Format(rankShareAmount.text, sInstance.qInstancList.Count);
+        //rankShareTime.text = string.Format(rankShareTime.text, sInstance.timeCost.ToString("f1"));
+        //rankShareSymbol.text = string.Format(rankShareSymbol.text, FightController.Instance.GetSymbol(sInstance.cInstance.symbolID));
+        //rankShareDigit.text = string.Format(rankShareDigit.text, (int)(sInstance.cInstance.digitID + 2));
+        //rankShareOperand.text = string.Format(rankShareOperand.text, (int)(sInstance.cInstance.operandID + 2));
+        //rankShareAccuracy.text = string.Format(rankShareAccuracy.text, sInstance.accuracy.ToString("f1"));
+        //string meanTime = (sInstance.timeCost / sInstance.qInstancList.Count).ToString("f1");
+        //rankShareMeanTime.text = string.Format(rankShareMeanTime.text, meanTime);
     }
 
     private void CalcResult(List<QuestionInstance> qInstancList, bool isOwn, out int right, out int noAnswer, out int wrong)

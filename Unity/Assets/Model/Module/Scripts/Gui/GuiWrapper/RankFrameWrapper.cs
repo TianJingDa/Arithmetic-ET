@@ -9,7 +9,6 @@ using System;
 public class RankFrameWrapper : GuiFrameWrapper
 {
 	private int delta;
-    private bool isDownloading;
 	private Dictionary<int, string[]> amountDropdownTextDict;
 	private List<Dropdown.OptionData> digitDropdownOptionsList;
 
@@ -58,13 +57,6 @@ public class RankFrameWrapper : GuiFrameWrapper
 				GuiController.Instance.SwitchWrapperWithScale(GuiFrameID.StartFrame, false);
 				break;
 			case "RankDataBtn":
-                if (isDownloading)
-                {
-                    return;
-                }
-                isDownloading = true;
-                curInstance = new CategoryInstance(curPatternID, curAmountID, curSymbolID, curDigitID, curOperandID);
-				GameManager.Instance.DownloadRecord(curInstance, OnDownloadSucceed, OnDownloadFail);
 				break;
 			case "RankData2RankFrameBtn":
 				CommonTool.GuiHorizontalMove(rankDataContent, Screen.width, MoveID.RightOrUp, canvasGroup, false);
@@ -153,7 +145,6 @@ public class RankFrameWrapper : GuiFrameWrapper
 
     private void OnDownloadSucceed(ArrayList dataList)
     {
-        isDownloading = false;
         FightController.Instance.CurCategoryInstance = curInstance;
         rankDataNum.text = GetDataNumName();
         rankDataContent.SetActive(true);
@@ -176,7 +167,6 @@ public class RankFrameWrapper : GuiFrameWrapper
 
 	private void OnDownloadFail(string message)
 	{
-        isDownloading = false;
         GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
 		GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
 	}

@@ -84,8 +84,8 @@ public class SetUpFrameWrapper : GuiFrameWrapper
         editionImg_Text.text = string.Format(version, GameManager.Instance.Version);
         languageTogglesAnchoredPositonList = InitToggleAnchoredPositon(languageToggleGroup);
         skinTogglesAnchoredPositonList = InitToggleAnchoredPositon(skinToggleGroup);
-        activityEnrollBtn.gameObject.SetActive(!RankController.Instance.AlreadyEnroll);
-        activityRankDetailBtn.gameObject.SetActive(RankController.Instance.AlreadyEnroll);
+        //activityEnrollBtn.gameObject.SetActive(!RankController.Instance.AlreadyEnroll);
+        //activityRankDetailBtn.gameObject.SetActive(RankController.Instance.AlreadyEnroll);
     }
 
     protected override void OnStart(Dictionary<string, GameObject> gameObjectDict)
@@ -306,23 +306,23 @@ public class SetUpFrameWrapper : GuiFrameWrapper
                 CommonTool.GuiHorizontalMove(activityWin, Screen.width, MoveID.RightOrUp, canvasGroup, false);
                 break;
             case "ActivityEnrollBtn":
-                if (RankController.Instance.AlreadyEnroll)
-                {
-                    string message = LanguageController.Instance.GetLanguage("Text_40058");
-                    GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
-                    GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
-                    return;
-                }
+                //if (RankController.Instance.AlreadyEnroll)
+                //{
+                //    string message = LanguageController.Instance.GetLanguage("Text_40058");
+                //    GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+                //    GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
+                //    return;
+                //}
 
-                if (string.IsNullOrEmpty(GameManager.Instance.UserName))
-                {
-                    GuiController.Instance.SwitchWrapper(GuiFrameID.NameBoardFrame, true);
-                    return;
-                }
+                //if (string.IsNullOrEmpty(GameManager.Instance.UserName))
+                //{
+                //    GuiController.Instance.SwitchWrapper(GuiFrameID.NameBoardFrame, true);
+                //    return;
+                //}
 
-                inputNum = "";
-                activityEnrollBoardInputField.text = "";
-                activityEnrollBoard.SetActive(true);
+                //inputNum = "";
+                //activityEnrollBoardInputField.text = "";
+                //activityEnrollBoard.SetActive(true);
                 break;
             case "ActivityEnrollBoardInputFieldConfirmBtn":
                 if (string.IsNullOrEmpty(inputNum)) return;
@@ -334,17 +334,17 @@ public class SetUpFrameWrapper : GuiFrameWrapper
                 activityEnrollBoard.SetActive(false);
                 break;
             case "ActivityEnrollTipBoardConfirmBtn":
-                if (isEnrolling)
-                {
-                    return;
-                }
+                //if (isEnrolling)
+                //{
+                //    return;
+                //}
 
-                isEnrolling = true;
-                WWWForm form = new WWWForm();
-                form.AddField("userId", GameManager.Instance.UserID);
-                form.AddField("jwttoken", GameManager.Instance.Token);
-                form.AddField("info", inputNum);
-                GameManager.Instance.EnrollActivity(form, OnEnrollSucceed, OnEnrollFail);
+                //isEnrolling = true;
+                //WWWForm form = new WWWForm();
+                //form.AddField("userId", GameManager.Instance.UserID);
+                //form.AddField("jwttoken", GameManager.Instance.Token);
+                //form.AddField("info", inputNum);
+                //GameManager.Instance.EnrollActivity(form, OnEnrollSucceed, OnEnrollFail);
                 break;
             case "ActivityEnrollTipBoardCancelBtn":
                 activityEnrollTipBoard.SetActive(false);
@@ -504,17 +504,17 @@ public class SetUpFrameWrapper : GuiFrameWrapper
 
     private void OnEnrollSucceed(CategoryInstance instance)
     {
-        isEnrolling = false;
-        RankController.Instance.AlreadyEnroll = true;
-        activityEnrollBtn.gameObject.SetActive(false);
-        activityRankDetailBtn.gameObject.SetActive(true);
-        activityEnrollBoard.SetActive(false);
-        RankController.Instance.ActivityCategory = instance;
-        OpenRankDetailBoard();
+        //isEnrolling = false;
+        //RankController.Instance.AlreadyEnroll = true;
+        //activityEnrollBtn.gameObject.SetActive(false);
+        //activityRankDetailBtn.gameObject.SetActive(true);
+        //activityEnrollBoard.SetActive(false);
+        //RankController.Instance.ActivityCategory = instance;
+        //OpenRankDetailBoard();
 
-        string message = LanguageController.Instance.GetLanguage("Text_20080");
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
-        GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
+        //string message = LanguageController.Instance.GetLanguage("Text_20080");
+        //GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        //GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 
     private void OnEnrollFail(string message)
@@ -526,17 +526,17 @@ public class SetUpFrameWrapper : GuiFrameWrapper
 
     private void OpenRankDetailBoard()
     {
-        activityRankDetailBoardBg.gameObject.SetActive(true);
-        CategoryInstance instance = RankController.Instance.ActivityCategory;
-        activityRankDetailPattern_Time.SetActive(instance.patternID == PatternID.Time);
-        activityRankDetailPattern_Number.SetActive(instance.patternID == PatternID.Number);
-        activityRankDetailTime.gameObject.SetActive(instance.patternID == PatternID.Time);
-        activityRankDetailAmount.gameObject.SetActive(instance.patternID == PatternID.Number);
-        activityRankDetailTime.text = string.Format(activityRankDetailTime.text, FightController.Instance.GetTimeAmount(instance.amountID));
-        activityRankDetailAmount.text = string.Format(activityRankDetailAmount.text, FightController.Instance.GetNumberAmount(instance.amountID));
-        activityRankDetailSymbol.text = string.Format(activityRankDetailSymbol.text, FightController.Instance.GetSymbol(instance.symbolID));
-        activityRankDetailDigit.text = string.Format(activityRankDetailDigit.text, (int)(instance.digitID + 2));
-        activityRankDetailOperand.text = string.Format(activityRankDetailOperand.text, (int)(instance.operandID + 2));
+        //activityRankDetailBoardBg.gameObject.SetActive(true);
+        //CategoryInstance instance = RankController.Instance.ActivityCategory;
+        //activityRankDetailPattern_Time.SetActive(instance.patternID == PatternID.Time);
+        //activityRankDetailPattern_Number.SetActive(instance.patternID == PatternID.Number);
+        //activityRankDetailTime.gameObject.SetActive(instance.patternID == PatternID.Time);
+        //activityRankDetailAmount.gameObject.SetActive(instance.patternID == PatternID.Number);
+        //activityRankDetailTime.text = string.Format(activityRankDetailTime.text, FightController.Instance.GetTimeAmount(instance.amountID));
+        //activityRankDetailAmount.text = string.Format(activityRankDetailAmount.text, FightController.Instance.GetNumberAmount(instance.amountID));
+        //activityRankDetailSymbol.text = string.Format(activityRankDetailSymbol.text, FightController.Instance.GetSymbol(instance.symbolID));
+        //activityRankDetailDigit.text = string.Format(activityRankDetailDigit.text, (int)(instance.digitID + 2));
+        //activityRankDetailOperand.text = string.Format(activityRankDetailOperand.text, (int)(instance.operandID + 2));
     }
 
     protected override void OnToggleClick(Toggle tgl)
