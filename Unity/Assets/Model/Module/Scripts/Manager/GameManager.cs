@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour
     private RecordController                                    c_RecordCtrl;
     private GuiController                                       c_GuiCtrl;
     private BluetoothController                                 c_BluetoothCtrl;
+    private NetworkController                                   c_NetworkCtrl;
 
-    private bool                                                m_IsLogining;
     private System.Action                                       m_ShareAction;                      //用于分享时初始化用户名称
     private ShareSDK                                            m_ShareSDK;                         //用于分享成就和成绩
 /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -75,10 +75,12 @@ public class GameManager : MonoBehaviour
         c_RecordCtrl            = RecordController.Instance;
         c_GuiCtrl               = GuiController.Instance;
         c_BluetoothCtrl         = BluetoothController.Instance;
+        c_NetworkCtrl           = NetworkController.Instance;
     }
 
     void Start()
     {
+        c_NetworkCtrl.Start();
         m_ShareSDK = GetComponent<ShareSDK>();
         m_ShareSDK.shareHandler = OnShareResultHandler;
         InitShareIcon();
@@ -88,7 +90,22 @@ public class GameManager : MonoBehaviour
 //#endif
     }
 
-#region 公共方法
+    void Update()
+    {
+        c_NetworkCtrl.Update();
+    }
+
+    void LateUpdate()
+    {
+        c_NetworkCtrl.LateUpdate();
+    }
+
+    void OnApplicationQuit()
+    {
+        c_NetworkCtrl.OnApplicationQuit();
+    }
+
+    #region 公共方法
 
     public void ShareImage(Rect mRect, PlatformType type)
     {

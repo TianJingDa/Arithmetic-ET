@@ -1,6 +1,18 @@
 using ETModel;
 namespace ETModel
 {
+	[Message(OuterOpcode.C2R_Login)]
+	public partial class C2R_Login : IRequest {}
+
+	[Message(OuterOpcode.R2C_Login)]
+	public partial class R2C_Login : IResponse {}
+
+	[Message(OuterOpcode.C2G_LoginGate)]
+	public partial class C2G_LoginGate : IRequest {}
+
+	[Message(OuterOpcode.G2C_LoginGate)]
+	public partial class G2C_LoginGate : IResponse {}
+
 	[Message(OuterOpcode.C2M_TestRequest)]
 	public partial class C2M_TestRequest : IActorLocationRequest {}
 
@@ -53,20 +65,24 @@ namespace ETModel
 {
 	public static partial class OuterOpcode
 	{
-		 public const ushort C2M_TestRequest = 101;
-		 public const ushort M2C_TestResponse = 102;
-		 public const ushort Actor_TransferRequest = 103;
-		 public const ushort Actor_TransferResponse = 104;
-		 public const ushort C2G_EnterMap = 105;
-		 public const ushort G2C_EnterMap = 106;
-		 public const ushort UnitInfo = 107;
-		 public const ushort M2C_CreateUnits = 108;
-		 public const ushort Frame_ClickMap = 109;
-		 public const ushort M2C_PathfindingResult = 110;
-		 public const ushort C2R_Ping = 111;
-		 public const ushort R2C_Ping = 112;
-		 public const ushort G2C_Test = 113;
-		 public const ushort C2M_Reload = 114;
-		 public const ushort M2C_Reload = 115;
+		 public const ushort C2R_Login = 101;
+		 public const ushort R2C_Login = 102;
+		 public const ushort C2G_LoginGate = 103;
+		 public const ushort G2C_LoginGate = 104;
+		 public const ushort C2M_TestRequest = 105;
+		 public const ushort M2C_TestResponse = 106;
+		 public const ushort Actor_TransferRequest = 107;
+		 public const ushort Actor_TransferResponse = 108;
+		 public const ushort C2G_EnterMap = 109;
+		 public const ushort G2C_EnterMap = 110;
+		 public const ushort UnitInfo = 111;
+		 public const ushort M2C_CreateUnits = 112;
+		 public const ushort Frame_ClickMap = 113;
+		 public const ushort M2C_PathfindingResult = 114;
+		 public const ushort C2R_Ping = 115;
+		 public const ushort R2C_Ping = 116;
+		 public const ushort G2C_Test = 117;
+		 public const ushort C2M_Reload = 118;
+		 public const ushort M2C_Reload = 119;
 	}
 }
