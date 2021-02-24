@@ -1,6 +1,6 @@
 ﻿using ETModel;
 
-namespace ETHotfix
+namespace ETModel
 {
 	[ObjectSystem]
 	public class NetOuterComponentAwakeSystem : AwakeSystem<NetOuterComponent>

@@ -7,7 +7,7 @@ namespace ETHotfix
 	{
 		public override void Start(RealmGateAddressComponent self)
 		{
-			//self.Start();
+			self.Start();
 		}
 	}
 	

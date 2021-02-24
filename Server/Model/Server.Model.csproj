@@ -89,6 +89,7 @@
     <Compile Include="..\..\Unity\Assets\Model\Module\Message\NetOuterComponent.cs">
       <Link>Module\Message\NetOuterComponent.cs</Link>
     </Compile>
+    <Compile Include="..\..\Unity\Assets\Model\Module\Message\NetOuterComponentSystem.cs" Link="System\Message\NetOuterComponentSystem.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Module\Message\Network\WebSocket\WChannel.cs">
       <Link>Module\Message\Network\WebSocket\WChannel.cs</Link>
     </Compile>
