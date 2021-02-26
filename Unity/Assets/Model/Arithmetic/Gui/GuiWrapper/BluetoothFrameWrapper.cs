@@ -273,8 +273,8 @@ public class BluetoothFrameWrapper : GuiFrameWrapper
 		else 
 		{
             MyDebug.LogGreen("Peripheral Start Scaning!");
-            BluetoothLEHardwareInterface.PeripheralName(GameManager.Instance.UserName);
-            MyDebug.LogGreen("PeripheralName:" + GameManager.Instance.UserName);
+            BluetoothLEHardwareInterface.PeripheralName(PlayerController.Instance.PlayerName);
+            MyDebug.LogGreen("PeripheralName:" + PlayerController.Instance.PlayerName);
 
             BluetoothLEHardwareInterface.CreateCharacteristic(BluetoothController.Instance.ReadUUID, 
 				BluetoothLEHardwareInterface.CBCharacteristicProperties.CBCharacteristicPropertyRead |
@@ -381,7 +381,7 @@ public class BluetoothFrameWrapper : GuiFrameWrapper
                     MyDebug.LogYellow("Central Initialize Fail: " + error);
                     message = LanguageController.Instance.GetLanguage("Text_80021"); 
                 }
-                GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Single, message);
+                GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Single, message);
                 GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
             });
 

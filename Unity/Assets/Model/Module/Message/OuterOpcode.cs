@@ -1,6 +1,12 @@
 using ETModel;
 namespace ETModel
 {
+	[Message(OuterOpcode.C2R_Register)]
+	public partial class C2R_Register : IRequest {}
+
+	[Message(OuterOpcode.R2C_Register)]
+	public partial class R2C_Register : IResponse {}
+
 	[Message(OuterOpcode.C2R_Login)]
 	public partial class C2R_Login : IRequest {}
 
@@ -12,9 +18,6 @@ namespace ETModel
 
 	[Message(OuterOpcode.G2C_LoginGate)]
 	public partial class G2C_LoginGate : IResponse {}
-
-	[Message(OuterOpcode.PlayerInfo)]
-	public partial class PlayerInfo : IMessage {}
 
 	[Message(OuterOpcode.C2G_PlayerInfo)]
 	public partial class C2G_PlayerInfo : IRequest {}
@@ -74,27 +77,28 @@ namespace ETModel
 {
 	public static partial class OuterOpcode
 	{
-		 public const ushort C2R_Login = 101;
-		 public const ushort R2C_Login = 102;
-		 public const ushort C2G_LoginGate = 103;
-		 public const ushort G2C_LoginGate = 104;
-		 public const ushort PlayerInfo = 105;
-		 public const ushort C2G_PlayerInfo = 106;
-		 public const ushort G2C_PlayerInfo = 107;
-		 public const ushort C2M_TestRequest = 108;
-		 public const ushort M2C_TestResponse = 109;
-		 public const ushort Actor_TransferRequest = 110;
-		 public const ushort Actor_TransferResponse = 111;
-		 public const ushort C2G_EnterMap = 112;
-		 public const ushort G2C_EnterMap = 113;
-		 public const ushort UnitInfo = 114;
-		 public const ushort M2C_CreateUnits = 115;
-		 public const ushort Frame_ClickMap = 116;
-		 public const ushort M2C_PathfindingResult = 117;
-		 public const ushort C2R_Ping = 118;
-		 public const ushort R2C_Ping = 119;
-		 public const ushort G2C_Test = 120;
-		 public const ushort C2M_Reload = 121;
-		 public const ushort M2C_Reload = 122;
+		 public const ushort C2R_Register = 101;
+		 public const ushort R2C_Register = 102;
+		 public const ushort C2R_Login = 103;
+		 public const ushort R2C_Login = 104;
+		 public const ushort C2G_LoginGate = 105;
+		 public const ushort G2C_LoginGate = 106;
+		 public const ushort C2G_PlayerInfo = 107;
+		 public const ushort G2C_PlayerInfo = 108;
+		 public const ushort C2M_TestRequest = 109;
+		 public const ushort M2C_TestResponse = 110;
+		 public const ushort Actor_TransferRequest = 111;
+		 public const ushort Actor_TransferResponse = 112;
+		 public const ushort C2G_EnterMap = 113;
+		 public const ushort G2C_EnterMap = 114;
+		 public const ushort UnitInfo = 115;
+		 public const ushort M2C_CreateUnits = 116;
+		 public const ushort Frame_ClickMap = 117;
+		 public const ushort M2C_PathfindingResult = 118;
+		 public const ushort C2R_Ping = 119;
+		 public const ushort R2C_Ping = 120;
+		 public const ushort G2C_Test = 121;
+		 public const ushort C2M_Reload = 122;
+		 public const ushort M2C_Reload = 123;
 	}
 }

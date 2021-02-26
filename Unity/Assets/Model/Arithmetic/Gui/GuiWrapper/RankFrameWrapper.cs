@@ -167,7 +167,7 @@ public class RankFrameWrapper : GuiFrameWrapper
 
 	private void OnDownloadFail(string message)
 	{
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
 		GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
 	}
 }

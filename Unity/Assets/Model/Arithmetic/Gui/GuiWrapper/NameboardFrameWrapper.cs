@@ -6,15 +6,7 @@ using System;
 
 public class NameboardFrameWrapper : GuiFrameWrapper
 {
-    private const float     TimeOut = 1f;
-#if TEST
-    private const string    NameURL = "http://182.92.68.73:8091/changeName";
-#else
-    private const string    NameURL = "http://47.105.77.226:8091/changeName";
-#endif
-
-    private bool            isCreating;
-    private string          userName;
+    private string          visitorName;
 
     private GameObject      nameBoardPage;
     private GameObject      nameTipBoard;
@@ -26,7 +18,7 @@ public class NameboardFrameWrapper : GuiFrameWrapper
     {
         id = GuiFrameID.NameBoardFrame;
         Init();
-        nameBoardInputField.onEndEdit.AddListener(OnEndEdit);
+        nameBoardInputField.onEndEdit.AddListener(value => visitorName = value);
         CommonTool.GuiScale(nameBoardPage, canvasGroup, true);
     }
 
@@ -44,16 +36,18 @@ public class NameboardFrameWrapper : GuiFrameWrapper
         switch (btn.name)
         {
             case "NameBoardInputFieldConfirmBtn":
-                if (string.IsNullOrEmpty(userName)) return;
+                if (string.IsNullOrEmpty(visitorName)) return;
                 nameTipBoard.SetActive(true);
                 string curName = LanguageController.Instance.GetLanguage(nameTipBoardContent.GetIndex());
-                nameTipBoardContent.text = string.Format(curName, userName);
+                nameTipBoardContent.text = string.Format(curName, visitorName);
                 break;
             case "NameBoardInputFieldCancelBtn":
                 GuiController.Instance.SwitchWrapper(GuiFrameID.None);
                 break;
 			case "NameTipBoardConfirmBtn":
-                //OnSilentLoginFail();
+                PlayerController.Instance.SetVisitorName(visitorName);
+                GuiController.Instance.SwitchWrapper(GuiFrameID.None);
+                GuiController.Instance.SwitchWrapper(GuiFrameID.StartFrame);
                 break;
             case "NameTipBoardCancelBtn":
                 nameTipBoard.SetActive(false);
@@ -62,16 +56,5 @@ public class NameboardFrameWrapper : GuiFrameWrapper
                 MyDebug.LogYellow("Can not find Button: " + btn.name);
                 break;
         }
-    }
-
-    private void OnEndEdit(string text)
-    {
-        userName = text;
-    }
-
-    private void OnSilentLoginFail(string message)
-    {
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
-        GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 }

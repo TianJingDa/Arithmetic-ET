@@ -35,7 +35,7 @@ public sealed class GuiController : Controller
     private Dictionary<GuiItemID, string> itemAddressDict;//key：Item名称，value：资源路径
     private Dictionary<GuiItemID, Object> itemDict;//key：GuiFrameID，value：资源
 
-    public CommonTipInstance CurCommonTipInstance { get; set; }
+    public CommonTipInstance CurCommonTipInstance { get; } = new CommonTipInstance();
 
     //获取栈顶第二个元素的ID
     public GuiFrameID LastGUI
@@ -111,6 +111,7 @@ public sealed class GuiController : Controller
         frameAddressDict.Add(GuiFrameID.SaveFileFrame, "GuiWrapper/SaveFileFrame");
         frameAddressDict.Add(GuiFrameID.ShareFrame, "GuiWrapper/ShareFrame");
         frameAddressDict.Add(GuiFrameID.RankFrame, "GuiWrapper/RankFrame");
+        frameAddressDict.Add(GuiFrameID.LoginFrame, "GuiWrapper/LoginFrame");
 
         itemAddressDict.Add(GuiItemID.AchievementItem, "GuiItem/AchievementItem");
         itemAddressDict.Add(GuiItemID.SaveFileItem, "GuiItem/SaveFileItem");

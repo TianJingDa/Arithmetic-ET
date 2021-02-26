@@ -61,7 +61,7 @@ public class AchievementItem : Item, IPointerDownHandler, IPointerExitHandler, I
     {
         if (content == null || string.IsNullOrEmpty(content.finishTime)) return;
         string tip = LanguageController.Instance.GetLanguage("Text_20027");
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Double, tip, OnDeleteConfirmed, null);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Double, tip, OnDeleteConfirmed);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 

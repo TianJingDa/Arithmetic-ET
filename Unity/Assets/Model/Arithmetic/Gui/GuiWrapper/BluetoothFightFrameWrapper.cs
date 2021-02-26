@@ -300,7 +300,7 @@ public class BluetoothFightFrameWrapper : GuiFrameWrapper
         else
         {
             string tip = "Index Wrong:" + message.index;
-            GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Single, tip);
+            GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Single, tip);
             GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
         }
     }

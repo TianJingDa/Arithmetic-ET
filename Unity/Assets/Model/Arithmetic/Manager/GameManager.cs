@@ -8,8 +8,6 @@ using cn.sharesdk.unity3d;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    private const float                                         TimeOut = 1f;
-
     private LanguageController                                  c_LanguageCtrl;
     private FightController                                     c_FightCtrl;
     private AchievementController                               c_AchievementCtrl;
@@ -21,24 +19,13 @@ public class GameManager : MonoBehaviour
     private GuiController                                       c_GuiCtrl;
     private BluetoothController                                 c_BluetoothCtrl;
     private NetworkController                                   c_NetworkCtrl;
+    private PlayerController                                    c_PlayerCtrl;
 
     private System.Action                                       m_ShareAction;                      //用于分享时初始化用户名称
     private ShareSDK                                            m_ShareSDK;                         //用于分享成就和成绩
 /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
 
     public ShareInstance CurShareInstance { get; set; }
-
-    public string UserName
-    {
-        get
-        {
-            return PlayerPrefs.GetString("UserName", null);
-        }
-        set
-        {
-            PlayerPrefs.SetString("UserName", value);
-        }
-    }
 
     public string Version
     {
@@ -76,6 +63,7 @@ public class GameManager : MonoBehaviour
         c_GuiCtrl               = GuiController.Instance;
         c_BluetoothCtrl         = BluetoothController.Instance;
         c_NetworkCtrl           = NetworkController.Instance;
+        c_PlayerCtrl            = PlayerController.Instance;
     }
 
     void Start()
@@ -84,7 +72,7 @@ public class GameManager : MonoBehaviour
         m_ShareSDK = GetComponent<ShareSDK>();
         m_ShareSDK.shareHandler = OnShareResultHandler;
         InitShareIcon();
-        c_GuiCtrl.SwitchWrapper(GuiFrameID.StartFrame, true);
+        c_GuiCtrl.SwitchWrapper(GuiFrameID.LoginFrame, true);
 //#if UNITY_EDITOR
 //        gameObject.AddComponent<Camera>();
 //#endif
@@ -199,7 +187,7 @@ public class GameManager : MonoBehaviour
             message = c_LanguageCtrl.GetLanguage("Text_20078");
         }
 
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 

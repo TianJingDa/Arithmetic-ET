@@ -39,6 +39,9 @@ namespace ETModel
 		
 		public const int ERR_AccountOrPasswordError = 200102;
 		public const int ERR_ActorLocationNotFound = 200103;
+		public const int ERR_AccountRepeat = 200104;
+		public const int ERR_PlayerNameRepeat = 200105;
+
 		//-----------------------------------
 		public static bool IsRpcNeedThrowException(int error)
 		{

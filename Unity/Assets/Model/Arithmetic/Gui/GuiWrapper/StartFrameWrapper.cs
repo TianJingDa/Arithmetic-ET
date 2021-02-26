@@ -38,11 +38,6 @@ public class StartFrameWrapper : GuiFrameWrapper
                 break;
             case "BluetoothBtn":
                 //if (Application.isEditor) return;
-                if (string.IsNullOrEmpty(GameManager.Instance.UserName))
-                {
-                    GuiController.Instance.SwitchWrapper(GuiFrameID.NameBoardFrame, true);
-                    return;
-                }
                 GuiController.Instance.SwitchWrapperWithScale(GuiFrameID.BluetoothFrame, true);
                 break;
 			case "RankBtn":

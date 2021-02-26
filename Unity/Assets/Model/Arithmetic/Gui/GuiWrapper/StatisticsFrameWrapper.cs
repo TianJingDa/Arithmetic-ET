@@ -170,11 +170,8 @@ public class StatisticsFrameWrapper : GuiFrameWrapper
 
     private void RefreshStatisticsTitle()
     {
-        if (!string.IsNullOrEmpty(GameManager.Instance.UserName))
-        {
-            string title = LanguageController.Instance.GetLanguage("Text_20072");
-            statisticsTitleImg_Text.text = string.Format(title, GameManager.Instance.UserName);
-        }
+        string title = LanguageController.Instance.GetLanguage("Text_20072");
+        statisticsTitleImg_Text.text = string.Format(title, PlayerController.Instance.PlayerName);
     }
 
     private void ShareImage(GameObject target, PlatformType type)

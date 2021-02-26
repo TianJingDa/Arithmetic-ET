@@ -15,8 +15,6 @@ namespace ETModel
 	public class PlayerComponent : Component
 	{
 		public static PlayerComponent Instance { get; private set; }
-
-		public Player MyPlayer;
 		
 		private readonly Dictionary<long, Player> idPlayers = new Dictionary<long, Player>();
 

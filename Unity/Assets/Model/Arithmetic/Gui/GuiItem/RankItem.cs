@@ -77,7 +77,7 @@ public class RankItem : Item, IPointerClickHandler
 
 	private void OnGetRankDetailFail(string message)
 	{
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
 		GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
 	}
 }

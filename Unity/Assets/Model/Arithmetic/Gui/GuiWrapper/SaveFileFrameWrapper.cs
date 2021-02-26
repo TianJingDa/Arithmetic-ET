@@ -42,7 +42,7 @@ public class SaveFileFrameWrapper : GuiFrameWrapper
         bluetoothResult.SetActive(isBluetooth);
         if (isBluetooth)
         {
-            saveFileOwnName.text = GameManager.Instance.UserName;
+            saveFileOwnName.text = PlayerController.Instance.PlayerName;
             saveFileOtherName.text = content.opponentName;
         }
         onlyWrongList = content.qInstancList.FindAll(FindWrong);
@@ -103,16 +103,10 @@ public class SaveFileFrameWrapper : GuiFrameWrapper
                     return;
                 }
 
-				if(string.IsNullOrEmpty(GameManager.Instance.UserName))
-				{
-                    GuiController.Instance.SwitchWrapper(GuiFrameID.NameBoardFrame, true);
-					return;
-				}
-
                 if (content.isUpload)
                 {
                     string message = LanguageController.Instance.GetLanguage("Text_90008");
-                    GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+                    GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
                     GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
                     return;
                 }
@@ -154,14 +148,14 @@ public class SaveFileFrameWrapper : GuiFrameWrapper
         isUploading = false;
         content.isUpload = true;
         RecordController.Instance.RefreshRecord(content);
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 
     private void OnUploadFail(string message)
     {
         isUploading = false;
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 }

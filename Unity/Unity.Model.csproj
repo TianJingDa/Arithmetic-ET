@@ -75,6 +75,7 @@
     <Compile Include="Assets\Model\Arithmetic\Control\LanguageController.cs" />
     <Compile Include="Assets\Model\Arithmetic\Control\LayoutController.cs" />
     <Compile Include="Assets\Model\Arithmetic\Control\NetworkController.cs" />
+    <Compile Include="Assets\Model\Arithmetic\Control\PlayerController.cs" />
     <Compile Include="Assets\Model\Arithmetic\Control\RankController.cs" />
     <Compile Include="Assets\Model\Arithmetic\Control\RecordController.cs" />
     <Compile Include="Assets\Model\Arithmetic\Control\SkinController.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\CommonTipFrameWrapper.cs" />
     <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\FightFrameWrapper.cs" />
     <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\GuiFrameWrapper.cs" />
+    <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\LoginFrameWrapper.cs" />
     <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\NameboardFrameWrapper.cs" />
     <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\RankFrameWrapper.cs" />
     <Compile Include="Assets\Model\Arithmetic\Gui\GuiWrapper\SaveFileFrameWrapper.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Assets\Model\Arithmetic\Network\Component\PlayerComponent.cs" />
     <Compile Include="Assets\Model\Arithmetic\Network\Component\UnitComponent.cs" />
     <Compile Include="Assets\Model\Arithmetic\Network\Entity\Player.cs" />
+    <Compile Include="Assets\Model\Arithmetic\Network\Entity\PlayerInfo.cs" />
     <Compile Include="Assets\Model\Arithmetic\Network\Entity\Unit.cs" />
     <Compile Include="Assets\Model\Arithmetic\Network\System\PlayerFactory.cs" />
     <Compile Include="Assets\Model\Arithmetic\Network\System\UnitFactory.cs" />

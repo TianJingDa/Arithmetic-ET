@@ -116,7 +116,7 @@ public class PeripheralItem : Item, IPointerClickHandler
                     {
                         MyDebug.LogWhite("Peripheral Disconnect!");
                         string tip = LanguageController.Instance.GetLanguage("Text_80019");
-                        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Single, tip);
+                        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Single, tip);
                         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
                         if(GuiController.Instance.CurGUI == GuiFrameID.BluetoothFrame)
                         {
@@ -150,7 +150,7 @@ public class PeripheralItem : Item, IPointerClickHandler
         MyDebug.LogGreen("First Write!");
         yield return new WaitForSeconds(1f);
         int seed = UnityEngine.Random.Range(1, int.MaxValue);
-        BluetoothMessage message = new BluetoothMessage(0, seed, GameManager.Instance.UserName);
+        BluetoothMessage message = new BluetoothMessage(0, seed, PlayerController.Instance.PlayerName);
         BluetoothController.Instance.SetSendMessageFunc(true);
         BluetoothController.Instance.BLESendMessage(message);
     }

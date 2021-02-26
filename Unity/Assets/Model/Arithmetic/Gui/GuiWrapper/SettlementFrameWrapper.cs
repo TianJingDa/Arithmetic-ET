@@ -104,16 +104,10 @@ public class SettlementFrameWrapper : GuiFrameWrapper
                     return;
                 }
 
-                if (string.IsNullOrEmpty(GameManager.Instance.UserName))
-                {
-                    GuiController.Instance.SwitchWrapper(GuiFrameID.NameBoardFrame, true);
-                    return;
-                }
-
                 if (curSaveFileInstance.isUpload)
                 {
                     string message = LanguageController.Instance.GetLanguage("Text_90008");
-                    GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+                    GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
                     GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
                     return;
                 }
@@ -142,7 +136,7 @@ public class SettlementFrameWrapper : GuiFrameWrapper
         bluetoothResult.SetActive(isBluetooth);
         if (isBluetooth)
         {
-            saveFileOwnName.text = GameManager.Instance.UserName;
+            saveFileOwnName.text = PlayerController.Instance.PlayerName;
             saveFileOtherName.text = curSaveFileInstance.opponentName;
         }
         allInstanceList = curSaveFileInstance.qInstancList;
@@ -206,14 +200,14 @@ public class SettlementFrameWrapper : GuiFrameWrapper
         isUploading = false;
         curSaveFileInstance.isUpload = true;
         RecordController.Instance.RefreshRecord(curSaveFileInstance);
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 
     private void OnUploadFail(string message)
 	{
         isUploading = false;
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Splash, message);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
 	}
 }

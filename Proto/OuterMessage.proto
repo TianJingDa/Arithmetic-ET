@@ -1,6 +1,21 @@
 syntax = "proto3";
 package ETModel;
 
+message C2R_Register // IRequest
+{
+	int32 RpcId = 90;
+	string	Account	 = 1;	// 帐号
+	string	Password = 2;	// 密码
+	string  Name = 3;       // 名称
+}
+
+message R2C_Register // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
 message C2R_Login // IRequest
 {
 	int32 RpcId = 90;
@@ -31,11 +46,6 @@ message G2C_LoginGate // IResponse
 	int64 PlayerId = 1;
 }
 
-message PlayerInfo // IMessage
-{
-	int32 RpcId = 90;
-}
-
 message C2G_PlayerInfo // IRequest
 {
 	int32 RpcId = 90;
@@ -46,11 +56,8 @@ message G2C_PlayerInfo // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-	PlayerInfo PlayerInfo = 1;
-	repeated PlayerInfo PlayerInfos = 2;
-    repeated string TestRepeatedString = 3;
-    repeated int32 TestRepeatedInt32 = 4;
-    repeated int64 TestRepeatedInt64 = 5;
+	string Name = 1;
+	int64 PlayerId = 2;
 }
 
 message C2M_TestRequest // IActorLocationRequest

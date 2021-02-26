@@ -106,7 +106,7 @@ public class SaveFileItem : Item, IPointerDownHandler, IPointerExitHandler, IPoi
     {
         if (content == null) return;
         string tip = LanguageController.Instance.GetLanguage("Text_20015");
-        GuiController.Instance.CurCommonTipInstance = new CommonTipInstance(CommonTipID.Double, tip, OnDeleteConfirmed, null);
+        GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Double, tip, OnDeleteConfirmed);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
 

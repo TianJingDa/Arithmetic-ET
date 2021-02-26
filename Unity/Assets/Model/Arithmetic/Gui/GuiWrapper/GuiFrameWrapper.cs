@@ -18,9 +18,9 @@ public abstract class GuiFrameWrapper : MonoBehaviour
         CommonTool.InitText(gameObject);
         CommonTool.InitImage(gameObject);
         canvasGroup = GetComponent<CanvasGroup>();
-        InitButton(OnButtonClick);
-        InitToggle(OnToggleClick);
-        InitDropdown(OnDropdownClick);
+        InitButton();
+        InitToggle();
+        InitDropdown();
         var dict = CommonTool.InitGameObjectDict(gameObject);
         OnStart(dict);
     }
@@ -31,31 +31,31 @@ public abstract class GuiFrameWrapper : MonoBehaviour
         CommonTool.InitImage(gameObject);
     }
 
-    private void InitButton(Action<Button> btnDelegate)
+    private void InitButton()
     {
         Button[] buttonArray = GetComponentsInChildren<Button>(true);
         for(int i = 0; i < buttonArray.Length; i++)
         {
             Button curButton = buttonArray[i];
-            curButton.onClick.AddListener(() => btnDelegate(curButton));
+            curButton.onClick.AddListener(() => OnButtonClick(curButton));
         }
     }
-    private void InitToggle(Action<Toggle> tglDelegate)
+    private void InitToggle()
     {
         Toggle[] toggleArray = GetComponentsInChildren<Toggle>(true);
         for(int i = 0; i < toggleArray.Length; i++)
         {
             Toggle curToggle = toggleArray[i];
-            curToggle.onValueChanged.AddListener(value => tglDelegate(curToggle));
+            curToggle.onValueChanged.AddListener(value => OnToggleClick(curToggle));
         }
     }
-    private void InitDropdown(Action<Dropdown> dpdDelegate)
+    private void InitDropdown()
     {
         Dropdown[] dropdownArray = GetComponentsInChildren<Dropdown>(true);
         for(int i = 0; i < dropdownArray.Length; i++)
         {
             Dropdown curDropdown = dropdownArray[i];
-            curDropdown.onValueChanged.AddListener(index => dpdDelegate(curDropdown));
+            curDropdown.onValueChanged.AddListener(index => OnDropdownClick(curDropdown));
         }
     }
 

@@ -20,6 +20,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Libs\**" />
+    <Compile Include="..\..\Unity\Assets\Model\Arithmetic\Network\Entity\PlayerInfo.cs" Link="Arithmetic\Entity\PlayerInfo.cs" />
     <Compile Include="..\..\Unity\Assets\Model\Base\Async\AsyncETTaskMethodBuilder.cs">
       <Link>Base\Async\AsyncETTaskMethodBuilder.cs</Link>
     </Compile>

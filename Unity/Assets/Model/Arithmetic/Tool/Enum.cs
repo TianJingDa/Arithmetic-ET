@@ -21,6 +21,7 @@ public enum GuiFrameID
     SaveFileFrame,             //存档详情界面
     ShareFrame,                //分享界面
 	RankFrame,				   //排行榜界面
+    LoginFrame,                //登录界面
 }
 public enum GuiItemID
 {
@@ -48,6 +49,7 @@ public enum ControllerID
     LoginController,           //登录控制器
     ShareController,           //分享控制器
     NetworkController,         //网络控制器
+    PlayerController,          //玩家控制器
 }
 public enum SkinID
 {

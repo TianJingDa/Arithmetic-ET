@@ -268,7 +268,7 @@ public class ShareFrameWrapper : GuiFrameWrapper
         if (instance == null) return;
         sharelTitle.gameObject.SetActive(true);
         sharelTitle.text = LanguageController.Instance.GetLanguage("Text_80015");
-        sharelTitle.text = string.Format(sharelTitle.text, GameManager.Instance.UserName, instance.opponentName);
+        sharelTitle.text = string.Format(sharelTitle.text, PlayerController.Instance.PlayerName, instance.opponentName);
         bluetoothShareAmount.text = string.Format(bluetoothShareAmount.text, instance.qInstancList.Count);
         bluetoothShareTime.text = string.Format(bluetoothShareTime.text, instance.timeCost.ToString("f1"));
         bluetoothShareSymbol.text = string.Format(bluetoothShareSymbol.text, FightController.Instance.GetSymbol(instance.cInstance.symbolID));
@@ -324,23 +324,14 @@ public class ShareFrameWrapper : GuiFrameWrapper
 
     private void ShareImage(PlatformType type)
     {
-        if (string.IsNullOrEmpty(GameManager.Instance.UserName))
+        if (!sharelTitle.gameObject.activeSelf)
         {
-            GuiController.Instance.SwitchWrapper(GuiFrameID.NameBoardFrame, true);
+            sharelTitle.gameObject.SetActive(true);
+            sharelTitle.text = string.Format(sharelTitle.text, PlayerController.Instance.PlayerName);
         }
-        else
-        {
-            if (!sharelTitle.gameObject.activeSelf)
-            {
-                sharelTitle.gameObject.SetActive(true);
-                sharelTitle.text = string.Format(sharelTitle.text, GameManager.Instance.UserName);
-            }
-            Rect shotRect = CommonTool.GetShotTargetRect(sharePage);
-            GameManager.Instance.ShareImage(shotRect, type);
-        }
+        Rect shotRect = CommonTool.GetShotTargetRect(sharePage);
+        GameManager.Instance.ShareImage(shotRect, type);
     }
-
-
 }
 
 public class ShareInstance
