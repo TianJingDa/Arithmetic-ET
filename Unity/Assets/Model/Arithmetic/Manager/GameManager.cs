@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.IO;
-using cn.sharesdk.unity3d;
+//using cn.sharesdk.unity3d;
 
 /// <summary>
 /// 游戏控制层
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private PlayerController                                    c_PlayerCtrl;
 
     private System.Action                                       m_ShareAction;                      //用于分享时初始化用户名称
-    private ShareSDK                                            m_ShareSDK;                         //用于分享成就和成绩
+    //private ShareSDK                                            m_ShareSDK;                         //用于分享成就和成绩
 /*--------------------------------------------------------------------------------------------------------------------------------------------------*/
 
     public ShareInstance CurShareInstance { get; set; }
@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         c_NetworkCtrl.Start();
-        m_ShareSDK = GetComponent<ShareSDK>();
-        m_ShareSDK.shareHandler = OnShareResultHandler;
+        //m_ShareSDK = GetComponent<ShareSDK>();
+        //m_ShareSDK.shareHandler = OnShareResultHandler;
         InitShareIcon();
         c_GuiCtrl.SwitchWrapper(GuiFrameID.LoginFrame, true);
 //#if UNITY_EDITOR
@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     #region 公共方法
 
+    /*
     public void ShareImage(Rect mRect, PlatformType type)
     {
         string directoryPath = Application.persistentDataPath + "/ScreenShot";
@@ -123,10 +124,11 @@ public class GameManager : MonoBehaviour
         }
         m_ShareSDK.ShareContent(type, content);
     }
+    */
 #endregion
 
 #region 私有方法
-
+    /*
     /// <summary>
     /// 截屏
     /// </summary>
@@ -190,6 +192,7 @@ public class GameManager : MonoBehaviour
         GuiController.Instance.CurCommonTipInstance.SetInstance(CommonTipID.Splash, message);
         GuiController.Instance.SwitchWrapper(GuiFrameID.CommonTipFrame, true);
     }
+    */
 
     private void InitShareIcon()
     {

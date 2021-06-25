@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using cn.sharesdk.unity3d;
 using DG.Tweening;
 
 /// <summary>
@@ -488,13 +487,13 @@ public class SetUpFrameWrapper : GuiFrameWrapper
                 CommonTool.GuiScale(thankDevelopersPage, canvasGroup, false, () => thankDevelopersWin.SetActive(false));
                 break;
             case "WeChatBtnInSetUp":
-                GameManager.Instance.ShareUrl(PlatformType.WeChat);
+                //GameManager.Instance.ShareUrl(PlatformType.WeChat);
                 break;
             case "WeChatMomentsInSetUp":
-                GameManager.Instance.ShareUrl(PlatformType.WeChatMoments);
+                //GameManager.Instance.ShareUrl(PlatformType.WeChatMoments);
                 break;
             case "SinaWeiboBtnInSetUp":
-                GameManager.Instance.ShareUrl(PlatformType.SinaWeibo);
+                //GameManager.Instance.ShareUrl(PlatformType.SinaWeibo);
                 break;
             default:
                 MyDebug.LogYellow("Can not find Button: " + btn.name);

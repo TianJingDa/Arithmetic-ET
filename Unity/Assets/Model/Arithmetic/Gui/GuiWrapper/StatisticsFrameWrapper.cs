@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Linq;
-using cn.sharesdk.unity3d;
+//using cn.sharesdk.unity3d;
 
 /// <summary>
 /// 统计数据界面
@@ -174,12 +174,12 @@ public class StatisticsFrameWrapper : GuiFrameWrapper
         statisticsTitleImg_Text.text = string.Format(title, PlayerController.Instance.PlayerName);
     }
 
-    private void ShareImage(GameObject target, PlatformType type)
-    {
-        RectTransform shotTarget = target.transform as RectTransform;
-        Rect shotRect = CommonTool.GetShotTargetRect(shotTarget);
-        GameManager.Instance.ShareImage(shotRect, type);
-    }
+    //private void ShareImage(GameObject target, PlatformType type)
+    //{
+    //    RectTransform shotTarget = target.transform as RectTransform;
+    //    Rect shotRect = CommonTool.GetShotTargetRect(shotTarget);
+    //    GameManager.Instance.ShareImage(shotRect, type);
+    //}
 
     private void RefreshStatisticsContent()
     {

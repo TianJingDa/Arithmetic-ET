@@ -334,8 +334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1840000832}
   - component: {fileID: 1840000829}
-  - component: {fileID: 1840000834}
-  - component: {fileID: 1840000833}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -374,64 +372,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1840000833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840000828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ee8c86adb63a4e91b07b8a67a0a4cd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1840000834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840000828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eae4e51a18be67c4ca73bc3a447b856a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  appKey: 2265174f72798
-  appSecret: fb2581a5ab4bf465ac0611e0de806f68
-  devInfo:
-    sinaweibo:
-      Enable: 1
-      SortId: 4
-      AppKey: 1468951461
-      AppSecret: b73fafc1185c1710ff68649b53fcb47b
-      RedirectUrl: http://www.sharesdk.cn
-      ShareByWebApi: 1
-      ShareByAppClient: 1
-    qq:
-      Enable: 1
-      SortId: 2
-      AppId: 100371282
-      AppKey: aed9b0303e3ed1e27bae87c33761161d
-      ShareByAppClient: 1
-    qzone:
-      Enable: 1
-      SortId: 1
-      AppId: 100371282
-      AppKey: ae36f4ee3946e1cbb98d6965b0b2ff5c
-      ShareByAppClient: 1
-    wechat:
-      Enable: 1
-      SortId: 5
-      AppId: wx3bc7cbed831bf097
-      AppSecret: 53a2a815a1ce8076df4124359cd202bf
-      userName: 
-      path: 
-      BypassApproval: 0
-    wechatMoments:
-      Enable: 1
-      SortId: 6
-      AppId: wx3bc7cbed831bf097
-      AppSecret: 53a2a815a1ce8076df4124359cd202bf
-      BypassApproval: 0

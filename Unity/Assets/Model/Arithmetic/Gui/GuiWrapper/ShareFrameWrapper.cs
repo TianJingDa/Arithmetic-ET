@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System.Text;
-using cn.sharesdk.unity3d;
+//using cn.sharesdk.unity3d;
 
 
 public class ShareFrameWrapper : GuiFrameWrapper
@@ -143,13 +143,13 @@ public class ShareFrameWrapper : GuiFrameWrapper
         switch (btn.name)
         {
             case "WeChatBtn":
-                ShareImage(PlatformType.WeChat);
+                //ShareImage(PlatformType.WeChat);
                 break;
             case "WeChatMomentsBtn":
-                ShareImage(PlatformType.WeChatMoments);
+                //ShareImage(PlatformType.WeChatMoments);
                 break;
             case "SinaWeiboBtn":
-                ShareImage(PlatformType.SinaWeibo);
+                //ShareImage(PlatformType.SinaWeibo);
                 break;
             case "ShareFrameBg":
                 shareBtnsBg.DOMoveY(endPos, duration, true);
@@ -322,16 +322,16 @@ public class ShareFrameWrapper : GuiFrameWrapper
         wrong = qInstancList.Count - right - noAnswer;
     }
 
-    private void ShareImage(PlatformType type)
-    {
-        if (!sharelTitle.gameObject.activeSelf)
-        {
-            sharelTitle.gameObject.SetActive(true);
-            sharelTitle.text = string.Format(sharelTitle.text, PlayerController.Instance.PlayerName);
-        }
-        Rect shotRect = CommonTool.GetShotTargetRect(sharePage);
-        GameManager.Instance.ShareImage(shotRect, type);
-    }
+    //private void ShareImage(PlatformType type)
+    //{
+    //    if (!sharelTitle.gameObject.activeSelf)
+    //    {
+    //        sharelTitle.gameObject.SetActive(true);
+    //        sharelTitle.text = string.Format(sharelTitle.text, PlayerController.Instance.PlayerName);
+    //    }
+    //    Rect shotRect = CommonTool.GetShotTargetRect(sharePage);
+    //    GameManager.Instance.ShareImage(shotRect, type);
+    //}
 }
 
 public class ShareInstance
