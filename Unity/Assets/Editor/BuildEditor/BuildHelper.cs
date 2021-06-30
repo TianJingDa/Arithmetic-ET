@@ -61,7 +61,7 @@ namespace ETEditor
 			{
 				AssetDatabase.Refresh();
 				string[] levels = {
-					"Assets/Scenes/Init.unity",
+					"Assets/Scenes/Boot.unity",
 				};
 				Log.Info("开始EXE打包");
 				BuildPipeline.BuildPlayer(levels, $"{relativeDirPrefix}/{exeName}", buildTarget, buildOptions);
